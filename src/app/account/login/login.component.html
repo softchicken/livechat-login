@@ -1,0 +1,19 @@
+<form class="form-group" [formGroup]="userLoginForm" (ngSubmit)="userLoginForm.valid && login(userLoginForm.value)">
+  <label for="email">Email
+    <input class="text-input" type="email" formControlName="email" placeholder="email">
+  </label>
+  <label for="password">Password
+    <input class="text-input" type="password" formControlName="password" placeholder="password">
+  </label>
+  <label class="checkbox-label" for="rememberMe">Remember me
+    <input type="checkbox" id="rememberMe" formControlName="rememberMe" placeholder="rememberMe">
+  </label>
+  <input class="btn" type="submit" value="Login" [disabled]="!userLoginForm.valid">
+  <div class="alert" *ngIf="!userLoginForm.controls['email'].valid && (userLoginForm.controls['email'].touched || userLoginForm.controls['email'].dirty)">Validation error: invalid email</div>
+  <div class="alert" *ngIf="!userLoginForm.controls['password'].valid && (userLoginForm.controls['password'].touched || userLoginForm.controls['password'].dirty)">Validation error: invalid password</div>
+  <div *ngIf="errorMessages.length > 0">
+    <div  class="alert" *ngFor="let errorMessage of errorMessages">
+       {{ errorMessage }}
+    </div>
+</div>
+</form>
