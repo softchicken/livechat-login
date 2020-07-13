@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.login$.unsubscribe();
   }
 
-  private login(model) {
+  public login(model) {
     this.clearErrorMessages();
     const user = new User();
     user.email = model.email;
